@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InfoForm</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <style> -->
+      
+<!-- .container{
+	max-width: 50%;
+	border:2px solid black;
+	margin:auto auto;
+	text-align: center;
+}
+input{
+	display: flex;
+	flex-direction: column;
+	max-width: 200em;
+	width: 50%;
+	margin: auto auto;
+	margin-bottom: 2px;
+	
+}
+.search-btn{
+	display: flex;
+	flex-direction: column;
+	max-width: 200em;
+	margin: auto auto;
+}
+    </style> -->
+  </head>
+ 
+  <body>
+    <form class="container">
+      <h1>Introduction Form</h1>
+      <input type="search" class="search-bar" placeholder="email" />
+      <button class="search-btn">Search</button>
+
+      <label class="label" for="name">Name:</label>
+      <input type="text" class="name" />
+      <div class="name-div"></div>
+      
+      <label for="email" class="label">email:</label>
+      <input type="email" class="email" />
+      <div class="email-div"></div>
+      
+      <label class="label" for="Hobbies">Hobbies:</label>
+      <input type="text" class="hobbies" />
+      <div class="hobbies-div"></div>
+      
+      <label class="label" for="Skills">Skills:</label>
+      <input type="text" class="skills" />
+      <div class="skills-div"></div>
+      
+      <button class="btn">Submit</button>
+
+      <button class="edit-btn"><a href="/info/form/edit"> Edit Form</a></button>
+      <button class="delete"><a href="/info/form/delete">Delete Info</a></button>
+      <div class="msg"></div>
+    </form>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/submit_search.js"></script>
+    <!-- <script>
+      //btns
+      const btn = document.querySelector(".btn");
+      const searchBtn = document.querySelector('.search-btn');
+      const editBtn = document.querySelector('.edit-btn');
+      
+      //divs
+      const nameDiv = document.querySelector(".name-div");
+      const emailDiv = document.querySelector(".email-div");
+      const hobbiesDiv = document.querySelector(".hobbies-div");
+      const skillsDiv = document.querySelector(".skills-div");
+
+
+
+      const divArr = [nameDiv,emailDiv,hobbiesDiv,skillsDiv];
+      divArr.forEach(element => {
+          element.style.display="none";
+      });
+
+      //prevent default on form
+
+      document.querySelector(".container").addEventListener("submit",(e)=>{
+        
+        e.preventDefault();
+      })
+      
+      //search
+      
+      searchBtn.addEventListener("click",async function(e){
+        e.preventDefault();
+        const searchBar = document.querySelector(".search-bar").value;
+        
+        let formInfo = await axios.post("/info/form/search",{searchBar});
+        
+        
+        
+        const name = document.querySelector(".name");
+        const email= document.querySelector(".email");
+        const hobbies = document.querySelector(".hobbies");
+        const skills = document.querySelector(".skills");
+        let inputArr=[name,email,hobbies,skills];
+        inputArr.forEach(element => {
+          element.style.display="none";
+        });
+        
+        if(formInfo.data.valid){
+             divArr.forEach(element => {
+                element.style.display="block";
+                });
+              nameDiv.innerHTML = formInfo.data.foundData.name;
+              emailDiv.innerHTML = formInfo.data.foundData.email;
+              hobbiesDiv.innerHTML = formInfo.data.foundData.hobbies;
+              skillsDiv.innerHTML = formInfo.data.foundData.skills;
+              }
+              else{
+
+                divArr.forEach(element => {
+                element.style.display="none";
+                });
+                let labels=document.querySelectorAll(".label")
+                labels.forEach(element => {
+                    element.style.display="none";
+                });
+
+              let div= document.createElement("div");
+              div.innerText = "Data not found"
+              document.querySelector(".container").appendChild(div)
+            }
+           
+            btn.style.display="none"
+            searchBtn.style.display="none"
+            editBtn.style.display="none"
+
+       })
+      
+       //submitting
+      
+       btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        
+        const name = document.querySelector(".name").value;
+        const email = document.querySelector(".email").value;
+        const hobbies = document.querySelector(".hobbies").value;
+        const skills = document.querySelector(".skills").value;
+
+        
+        if(name == "" ){
+          nameDiv.style.display="block";
+          nameDiv.innerText = "Enter Your Name!!!";
+          nameDiv.style.color="red";
+        }
+        if(email == "" ){
+          emailDiv.style.display="block";
+          emailDiv.innerText = "Enter Your email!!!";
+          emailDiv.style.color="red";
+        }
+        if(hobbies == "" ){
+          hobbiesDiv.style.display="block";
+          hobbiesDiv.innerText = "Enter Your hobbiess!!!";
+          hobbiesDiv.style.color="red";
+        }
+        if(skills == "" ){
+          skillsDiv.style.display="block";
+          skillsDiv.innerText = "Enter Your skills!!";
+          skillsDiv.style.color="red";
+        }
+        
+        if(name != "" || email !="" || hobbies !="" || skills !=""){
+          let isValid = await axios.post("/info/form", {
+            name,
+            email,
+            hobbies,
+            skills,
+            search:false
+          });
+          console.log(isValid)
+          let msg =document.querySelector(".msg")
+          if(isValid.data.unique){
+            msg.innerText = "Credentials Uploaded successfully"            
+          }
+          else{
+            msg.innerText="Your emailId already exists"
+          }
+        }
+        
+      });
+    
+      
+      
+    
+  
+  </script> -->
+ 
+</body>
+</html>

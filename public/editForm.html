@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        .container{
+            border: 4px solid black;
+            padding:5px 5px;
+        }
+    </style> -->
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+        <form  class="container">
+
+            <h1>Edit Response</h1>
+
+            <label for="Email">Enter Current Email</label>
+            <input type="email" class="email">
+            
+            <label for="name">Enter name</label>
+            <input type="text" class="name">
+            
+            <label for="hobbies">Enter hobbies</label>
+            <input type="text" class="hobbies">
+
+            <label for="skills">Enter skills</label>
+            <input type="text" class="skills">
+
+            <button class="submitBtn" >submit</button>
+            <div class="result"></div>
+        </form>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/js/dataUpdate.js" type="text/javascript"></script>
+        <!-- <script>
+
+            const emailInp = document.querySelector(".email");
+            const nameInp = document.querySelector(".name");
+            const hobbiesInp = document.querySelector(".hobbies");
+            const skillsInp= document.querySelector(".skills");
+
+            const submitBtn = document.querySelector(".submitBtn");
+
+            //post req for updating data;
+            submitBtn.addEventListener("click",async(e)=>{
+               
+                e.preventDefault();
+                let email = emailInp.value;
+                let name  = nameInp.value;
+                let hobbies= hobbiesInp.value;
+                let skills = skillsInp.value;
+                let isValid = await axios.put("/info/form/edit",{
+                    name,
+                    email,
+                    hobbies,
+                    skills
+                })
+
+                
+                const  result=document.querySelector(".result")
+                let msg="";
+                    // result.innerText = "Credentials Updated successfully"; 
+                if(isValid.data.valid){
+                    console.log("if")
+                    result.innerText = 'Credentials Updated successfully';
+                    // msg= 'Credentials Updated successfully';
+                }
+                else{
+                    console.log("else")
+                    result.innerText = 'Your data not found';
+                    // msg = 'Your data not found';
+
+                }
+                // var divTag= document.createElement('div');
+                // var form=document.querySelector(".container");
+                // divTag.innerHTML = msg;
+                // form.appendChild(divTag)
+                
+            })
+
+        </script> -->
+</body>
+</html>

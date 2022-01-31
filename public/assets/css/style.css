@@ -1,0 +1,22 @@
+
+.container{
+	max-width: 50%;
+	border:2px solid black;
+	margin:auto auto;
+	text-align: center;
+}
+input{
+	display: flex;
+	flex-direction: column;
+	max-width: 200em;
+	width: 50%;
+	margin: auto auto;
+	margin-bottom: 2px;
+	
+}
+.search-btn{
+	display: flex;
+	flex-direction: column;
+	max-width: 200em;
+	margin: auto auto;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form class="container">
+
+        <input type="email" class="email" placeholder="Enter email-id"/>
+
+        <label for="Otp">Enter OTP</label>
+        <input type="number" placeholder="Enter otp"/>
+        <button class="otpBtn">Submit</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+            const otpBtn = document.querySelector(".otpBtn")
+            
+            document.querySelector(".container").addEventListener("submit",(e)=>{
+                e.preventDefault();
+            })
+
+
+            //sending otp
+            otpBtn.addEventListener("click",async (e)=>{
+
+                e.preventDefault();
+                
+                let email = document.querySelector(".email").value;
+                
+                let verify = await axios.post("/info/form/delete",{email});
+                console.log(verify)
+
+            })
+            
+    </script>
+</body>
+</html>
