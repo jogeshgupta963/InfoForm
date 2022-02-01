@@ -2,6 +2,7 @@ const express=require("express");
 const path=require("path");
 const nodemailer = require("nodemailer")
 const userModel = require("../Models/userModel")
+const cookieParser= require('cookie-parser')
 require("dotenv").config()
 
 //get fun for index.html
@@ -46,7 +47,7 @@ async function postSearch(req,res){
         res.json({foundData,valid:false});
         }
     } catch (error) {
-        res.json({message:"data not found"});
+        res.json({valid:false});
     }
     
 }
@@ -79,13 +80,13 @@ function getDelPage(req,res){
 
 }
 
-
+//for sending otp
 async function otpSender(req,res){
     try {
         let userData = req.body;
         
 
-      console.log(userData);
+      
   
   
         let gmailPass = process.env.gmailPass
@@ -105,16 +106,10 @@ async function otpSender(req,res){
          subject: "Enter this otp to delete ur registered data ", 
            html: `<b>Your OTP:${otp} </b>`,
         });
-
-    console.log("Message sent: %s", info.messageId);
- 
-     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  
-
-      console.log("Message sent: %s", info.messageId);
       
-      return res.json({success:true,otp});
-            
+
+      res.cookie("otpValue",otp,{httpOnly:true})
+      res.json({success:true});
             
             
           } catch (err) {
@@ -124,6 +119,30 @@ async function otpSender(req,res){
     
 }
 
+//middleware for otpVerification
+async function otpCookieVerification(req,res,next){
+
+   
+    if(req.cookies.otpValue == req.body.otp){
+        next();
+    }
+    else{
+        res.json({status:false})
+    }
+}
+//main function to delete data
+async function deleteData(req,res){
+    try{
+    let data = req.body.email;
+    
+    await userModel.findOneAndDelete({email:data});
+    res.json({status:true})
+    }
+    catch{
+        res.json({status:false})
+    }
+}
+
 module.exports = {
-    getPage,saveInfo,postSearch,getEditPage,editPage,getDelPage,otpSender
+    getPage,saveInfo,postSearch,getEditPage,editPage,getDelPage,otpSender,deleteData,otpCookieVerification
 }

@@ -4,6 +4,8 @@
  const btn = document.querySelector(".btn");
  const searchBtn = document.querySelector('.search-btn');
  const editBtn = document.querySelector('.edit-btn');
+ const deleteBtn = document.querySelector('.delete');
+
  
  //divs
  const nameDiv = document.querySelector(".name-div");
@@ -63,15 +65,15 @@
                element.style.display="none";
            });
 
-         let div= document.createElement("div");
+         let div= document.querySelector(".msg")
          div.innerText = "Data not found"
-         document.querySelector(".container").appendChild(div)
+        //  document.querySelector(".container").appendChild(div)
        }
       
        btn.style.display="none"
        searchBtn.style.display="none"
        editBtn.style.display="none"
-
+       deleteBtn.style.display="none"
   })
  
   //submitting
