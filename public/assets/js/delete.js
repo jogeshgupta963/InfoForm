@@ -19,7 +19,7 @@ otpBtn.addEventListener("click", async (e) => {
 
     let verify = await axios.post("/info/form/delete", { email });
     msg.innerText = "An otp has been sent to "+email;
-    otpBtn.style.display="none"
+    otpBtn.innerHTML ="Resend"
     submitBtn.style.display="block"
 })
 //submit btn
@@ -37,7 +37,7 @@ submitBtn.addEventListener("click",async(e)=>{
         msg.innerText = "Data Deleted Successfully"
     }
     else{
-        msg.innerText = "Invalid OTP"
+        msg.innerText = "Invalid OTP or your details doesnt exist "
     }
     }
 })

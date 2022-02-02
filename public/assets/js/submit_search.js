@@ -30,9 +30,9 @@
  //search
  
  searchBtn.addEventListener("click",async function(e){
+   document.querySelector(".msg").style.display=none
    e.preventDefault();
    const searchBar = document.querySelector(".search-bar").value;
-   
    let formInfo = await axios.post("/info/form/search",{searchBar});
    
    

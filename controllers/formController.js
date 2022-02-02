@@ -135,8 +135,13 @@ async function deleteData(req,res){
     try{
     let data = req.body.email;
     
-    await userModel.findOneAndDelete({email:data});
+    let userData = await userModel.findOneAndDelete({email:data});
+    if(!userData){
+    res.json({status:false})
+    }
+    else{
     res.json({status:true})
+    }
     }
     catch{
         res.json({status:false})
