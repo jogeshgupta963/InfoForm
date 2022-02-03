@@ -18,8 +18,8 @@ body{
     width: 40%;
     margin:auto auto;
     border: 2px solid white;
-    padding-bottom: 30px;
-    margin-top:5%;
+    padding-bottom: 20px;
+    margin-top:4%;
     overflow: hidden;
     border-radius: 20px;
 	text-align: center;
@@ -57,15 +57,30 @@ body{
 }
 button{
 	background-color: var(--bg-color);
-	
+	cursor: pointer;
 	border:2px solid black;
 	padding:10px 10px;
 	border-radius:10px;
 	font-weight: bolder;
 	margin-top: 2%;
 }
-/* .submitBtn{
-	padding:10px 10px;
-	margin-top: 2%;
-	font-weight: bolder;
-} */
+button:hover{
+    background-color: var(--div-color);
+    color:var(--bg-color);
+    border-color: rgb(185, 174, 174);
+}
+a:hover{
+     color:var(--bg-color);
+}
+
+.back-Btn{
+    display: block;
+    margin-left:15px
+}
+a{
+    text-decoration: none;
+    color:var(--div-color)
+}
+h1{
+    color:whitesmoke
+}
