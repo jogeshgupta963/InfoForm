@@ -11,7 +11,8 @@
             padding:5px 5px;
         }
     </style> -->
-    <link rel="stylesheet" href="/css/edit.css">
+    <!-- <link rel="stylesheet" href="/css/edit.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
         <form  class="container">
@@ -19,19 +20,19 @@
             <h1>Edit Response</h1>
 
             <label for="Email">Enter Current Email</label>
-            <input type="email" class="email">
+            <input type="email" class="submitInput email">
             
             <label for="name">Enter name</label>
-            <input type="text" class="name">
+            <input type="text" class="submitInput name">
             
             <label for="hobbies">Enter hobbies</label>
-            <input type="text" class="hobbies">
+            <input type="text" class="submitInput hobbies">
 
             <label for="skills">Enter skills</label>
-            <input type="text" class="skills">
+            <input type="text" class="submitInput skills">
 
-            <button class="submitBtn" >submit</button>
-            <div class="result"></div>
+            <div class="result" style="margin-top:10px;"></div>
+            <button class="submitBtn" >Submit</button>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

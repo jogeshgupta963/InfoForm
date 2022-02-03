@@ -5,6 +5,7 @@
  const searchBtn = document.querySelector('.search-btn');
  const editBtn = document.querySelector('.edit-btn');
  const deleteBtn = document.querySelector('.delete');
+ const backBtn = document.querySelector('.back-btn');
 
  
  //divs
@@ -14,7 +15,7 @@
  const skillsDiv = document.querySelector(".skills-div");
 
 
-
+backBtn.style.display="none"
  const divArr = [nameDiv,emailDiv,hobbiesDiv,skillsDiv];
  divArr.forEach(element => {
      element.style.display="none";
@@ -29,13 +30,16 @@
  
  //search
  
- searchBtn.addEventListener("click",async function(e){
-   document.querySelector(".msg").style.display=none
+  searchBtn.addEventListener("click",async function(e){
+   document.querySelector(".msg").innerText=""
    e.preventDefault();
    const searchBar = document.querySelector(".search-bar").value;
    let formInfo = await axios.post("/info/form/search",{searchBar});
+   if(searchBar == ""){
+     alert("enter a field to search")
+   }
    
-   
+   else{
    
    const name = document.querySelector(".name");
    const email= document.querySelector(".email");
@@ -66,6 +70,8 @@
            });
 
          let div= document.querySelector(".msg")
+         div.value="";
+         div.style.display="inline-block"
          div.innerText = "Data not found"
         //  document.querySelector(".container").appendChild(div)
        }
@@ -74,6 +80,8 @@
        searchBtn.style.display="none"
        editBtn.style.display="none"
        deleteBtn.style.display="none"
+       backBtn.style.display="inline-block"
+      }
   })
  
   //submitting
@@ -82,6 +90,7 @@
    e.preventDefault();
 
    
+  
    const name = document.querySelector(".name").value;
    const email = document.querySelector(".email").value;
    const hobbies = document.querySelector(".hobbies").value;
@@ -117,7 +126,7 @@
        skills,
        search:false
      });
-     console.log(isValid)
+     
      let msg =document.querySelector(".msg")
      if(isValid.data.unique){
        msg.innerText = "Credentials Uploaded successfully"            
@@ -129,5 +138,36 @@
    
  });
 
- 
- 
+//  backBtn
+  backBtn.addEventListener("click",()=>{
+
+    //divs
+    divArr.forEach(element => {
+        element.style.display="none";
+    })
+    //inputs
+        const name = document.querySelector(".name");
+         const email= document.querySelector(".email");
+        const hobbies = document.querySelector(".hobbies");
+       const skills = document.querySelector(".skills");
+      let inputArr=[name,email,hobbies,skills];
+         inputArr.forEach(element => {
+        element.style.display="flex";
+        });
+        //labels
+        let labels=document.querySelectorAll(".label")
+        labels.forEach(element => {
+            element.style.display="inline-block";
+        });
+
+        //btns
+        btn.style.display="inline-block"
+       searchBtn.style.display="inline-block"
+       editBtn.style.display="inline-block"
+       deleteBtn.style.display="inline-block"
+       backBtn.style.display="none"
+       //msg
+       let div= document.querySelector(".msg")
+       div.innerText="";
+      
+  }) 

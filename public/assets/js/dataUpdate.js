@@ -27,17 +27,16 @@
                 if(isValid.data.valid){
                     console.log("if")
                     result.innerText = 'Credentials Updated successfully';
-                    // msg= 'Credentials Updated successfully';
+                    result.style.color="green"
+                
                 }
                 else{
                     console.log("else")
                     result.innerText = 'Your data not found';
-                    // msg = 'Your data not found';
+                    result.style.color="red"
+                
 
                 }
-                // var divTag= document.createElement('div');
-                // var form=document.querySelector(".container");
-                // divTag.innerHTML = msg;
-                // form.appendChild(divTag)
+                
                 
             })
