@@ -33,6 +33,8 @@ backBtn.style.display="none"
   searchBtn.addEventListener("click",async function(e){
    document.querySelector(".msg").innerText=""
    e.preventDefault();
+    document.querySelector(".search-bar").style.display="none"
+    searchBtn.style.display="none"
    const searchBar = document.querySelector(".search-bar").value;
    let formInfo = await axios.post("/info/form/search",{searchBar});
    if(searchBar == ""){
@@ -77,7 +79,7 @@ backBtn.style.display="none"
        }
       
        btn.style.display="none"
-       searchBtn.style.display="none"
+       
        editBtn.style.display="none"
        deleteBtn.style.display="none"
        backBtn.style.display="inline-block"
