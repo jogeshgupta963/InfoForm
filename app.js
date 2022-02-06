@@ -18,17 +18,17 @@ app.use("/js",express.static(__dirname+"/public/assets/js"))
 app.use(cookieParser())
 
 app.use('/info',formRouter);
-// app.get("/",(req,res)=>{
-//     res.redirect("/info/form")
-// })
+app.get("/",(req,res)=>{
+    res.redirect("/info/form")
+});
 (async function dbConnection(){
     try {
         await dbConnect(process.env.linkDb);
         console.log("db connected")
-        console.log(process.env.linkDb,"linkdb")
+        // console.log(process.env.linkDb,"linkdb")
         app.listen(process.env.PORT||3000,()=>console.log("server connected"));
     } catch (error) {
-        console.log(process.env.linkDb,"linkdb")
+        // console.log(process.env.linkDb,"linkdb")
             console.log(error);
     }
 
