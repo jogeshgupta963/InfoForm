@@ -22,8 +22,10 @@ app.use('/info',formRouter);
     try {
         await dbConnect(process.env.linkDb);
         console.log("db connected")
+        console.log(process.env.linkDb,"linkdb")
         app.listen(process.env.PORT||3000,()=>console.log("server connected"));
     } catch (error) {
+        console.log(process.env.linkDb,"linkdb")
             console.log(error);
     }
 
