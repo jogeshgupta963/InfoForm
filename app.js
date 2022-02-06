@@ -16,8 +16,11 @@ app.use(cors());
 app.use("/css",express.static(__dirname+"/public/assets/css"))
 app.use("/js",express.static(__dirname+"/public/assets/js"))
 app.use(cookieParser())
-app.use('/info',formRouter);
 
+app.use('/info',formRouter);
+app.get("/",(req,res)=>{
+    res.redirect("/info")
+})
 (async function dbConnection(){
     try {
         await dbConnect(process.env.linkDb);
