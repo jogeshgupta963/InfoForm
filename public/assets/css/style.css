@@ -7,11 +7,27 @@
 	--bg-color:rgb(204, 127, 204);
 	--div-color:#252222;
 }
+@media screen and (max-width: 700px)  {
+    .container{
+        background-color: var(--div-color);
+        max-width: 100%;
+        width: 80%;
+        margin:auto auto;
+        border: 2px solid white;
+        padding-bottom: 20px;
+        margin-top:4%;
+        overflow: hidden;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+    }
+}
 body{
     margin:0;
     padding:0;
     background-color: var(--bg-color);
 }
+@media (min-width: 700px) {
 .container{
     background-color: var(--div-color);
     max-width: 100%;
@@ -25,7 +41,7 @@ body{
 	text-align: center;
 	color: white;
 }
-
+}
 /* submit inputs */
 /* .name,.email, .hobbies, .skills */
 .submitInput{
