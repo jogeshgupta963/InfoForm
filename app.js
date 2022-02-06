@@ -18,9 +18,9 @@ app.use("/js",express.static(__dirname+"/public/assets/js"))
 app.use(cookieParser())
 
 app.use('/info',formRouter);
-app.get("/",(req,res)=>{
-    res.redirect("/info")
-})
+// app.get("/",(req,res)=>{
+//     res.redirect("/info/form")
+// })
 (async function dbConnection(){
     try {
         await dbConnect(process.env.linkDb);
