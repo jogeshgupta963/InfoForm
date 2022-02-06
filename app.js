@@ -13,9 +13,10 @@ const app = express();
  
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser())
+
 app.use("/css",express.static(__dirname+"/public/assets/css"))
 app.use("/js",express.static(__dirname+"/public/assets/js"))
-app.use(cookieParser())
 
 app.use('/info',formRouter);
 app.get("/",(req,res)=>{

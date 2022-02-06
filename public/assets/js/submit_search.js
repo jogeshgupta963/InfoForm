@@ -98,29 +98,37 @@ backBtn.style.display="none"
    const hobbies = document.querySelector(".hobbies").value;
    const skills = document.querySelector(".skills").value;
 
-   
+   const nameErr = document.querySelector(".name-err")
+   const emailErr = document.querySelector(".email-err")
+   const hobbiesErr = document.querySelector(".hobbies-err")
+   const skillsErr = document.querySelector(".skills-err")
    if(name == "" ){
-     nameDiv.style.display="block";
-     nameDiv.innerText = "Enter Your Name!!!";
-     nameDiv.style.color="red";
+     nameErr.style.display="block";
+     nameErr.innerText = "Enter Your Name!!!";
+     nameErr.style.color="red";
    }
    if(email == "" ){
-     emailDiv.style.display="block";
-     emailDiv.innerText = "Enter Your email!!!";
-     emailDiv.style.color="red";
+     emailErr.style.display="block";
+     emailErr.innerText = "Enter Your email!!!";
+     emailErr.style.color="red";
+   }
+   else if(!email.includes("@")){
+    emailErr.style.display="block";
+    emailErr.innerText = "Invalid email";
+    emailErr.style.color="red";
    }
    if(hobbies == "" ){
-     hobbiesDiv.style.display="block";
-     hobbiesDiv.innerText = "Enter Your hobbiess!!!";
-     hobbiesDiv.style.color="red";
+     hobbiesErr.style.display="block";
+     hobbiesErr.innerText = "Enter Your hobbiess!!!";
+     hobbiesErr.style.color="red";
    }
    if(skills == "" ){
-     skillsDiv.style.display="block";
-     skillsDiv.innerText = "Enter Your skills!!";
-     skillsDiv.style.color="red";
+     skillsErr.style.display="block";
+     skillsErr.innerText = "Enter Your skills!!";
+     skillsErr.style.color="red";
    }
    
-   if(name != "" || email !="" || hobbies !="" || skills !=""){
+   if(name != "" && email !="" && hobbies !="" && skills !="" && email.includes("@")){
      let isValid = await axios.post("/info/form", {
        name,
        email,
@@ -143,7 +151,7 @@ backBtn.style.display="none"
 //  backBtn
   backBtn.addEventListener("click",()=>{
 
-    //divs
+    //divss
     divArr.forEach(element => {
         element.style.display="none";
     })
